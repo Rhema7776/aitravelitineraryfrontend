@@ -21,9 +21,15 @@ const SignupForm = () => {
     e.preventDefault();
     setError('');
 
-    try {
-      // const response = await fetch('https://aitravelitinerary.onrender.com/api/register/', {
-      const response = await fetch('https://127.0.0.1:8000/api/register/', {
+    // ✅ Offline check
+    if (!navigator.onLine) {
+      setError("You're offline. Please reconnect to sign up.");
+      return;
+    }
+      try {
+      // const response = await fetch('https://127.0.0.1:8000/api/register/', {
+      const response = await fetch('https://aitravelitinerary.onrender.com/api/register/', {
+
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

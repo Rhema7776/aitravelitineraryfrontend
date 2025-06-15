@@ -22,8 +22,9 @@ function LoginForm() {
     setError('');
   
     try {
-      // const response = await fetch('https://aitravelitinerary.onrender.com/api/token/', {
-      const response = await fetch('https://127.0.0.1:8000/api/token/', {
+      // const response = await fetch('https://127.0.0.1:8000/api/token/', {
+      const response = await fetch('https://aitravelitinerary.onrender.com/api/token/', {
+      
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,8 +40,13 @@ function LoginForm() {
       localStorage.setItem('access_token', data.access);
       localStorage.setItem('refresh_token', data.refresh);
   
-      //redirect to the itinerary form after successful login
-      navigate('/itinerary');
+      // //redirect to the itinerary form after successful login
+      // navigate('/itinerary');
+      // ✅ Slight delay to ensure storage sync before navigation
+      setTimeout(() => {
+        navigate('/itinerary');
+      }, 100); // 100 milliseconds
+
     } catch (err) {
       setError(err.message);
     }

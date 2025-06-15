@@ -12,8 +12,9 @@ function ItineraryHistory() {
   
   useEffect(() => {
     const token = localStorage.getItem('access_token');
-    // axios.get(`https://aitravelitinerary.onrender.com/api/history/?page=${page}`, {
-    axios.get(`https://127.0.0.1:8000/api/history/?page=${page}`, {
+    // axios.get(`https://127.0.0.1:8000/api/history/?page=${page}`, {
+    axios.get(`https://aitravelitinerary.onrender.com/api/history/?page=${page}`, {
+    
       headers: {
         Authorization: `Bearer ${token}`,
       }
